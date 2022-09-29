@@ -18,7 +18,7 @@ def index():
 
     event = find_closest_date()
     events_desc = find_three_events()
-    
+
     dt = event['date']
     time = dt.strftime("%b %d, %Y %X")
     jstime = dt.strftime("%m/%d/")
@@ -51,7 +51,8 @@ def index():
 
 @app.route('/calendar')
 def calendar_index():
-    return render_template('calendar.html')
+    current_month = datetime.now().month
+    return render_template('calendar.html', current_month=current_month)
 
 @app.route('/<month>/events')
 def monthly_events_index(month):
