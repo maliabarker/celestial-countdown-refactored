@@ -1,0 +1,14 @@
+<div aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-4">
+        <li class="mx-2"><a href="#">«</a></li>
+        {% for month in months %}
+            <li class="mx-2">
+                <a href="/{{ loop.index }}/events">
+                    <p class="pag-month">{{month}}</p>
+                    <p class="pag-year">2022</p>
+                </a>
+            </li>
+        {% endfor %}
+        <li class="mx-2"><a href="#">»</a></li>
+    </ul>
+</div>

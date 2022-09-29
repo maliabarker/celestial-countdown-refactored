@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}Celestial Countdown{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <!--COUNTDOWN-->
+            <div class="col-sm-9 mt-4 text-center" id="countdown-bg">
+                
+                <h4 class="mt-5" style="font-weight: 300;">Next Celestial Event...</h4>
+                <h1 style="color: #FFFFFF;" class="my-4">{{ event.eventName }}</h1>
+                
+                <div class="mt-5">
+                    <div class="container" >
+                        <div class="row mx-5 py-3" id="countdown">
+                            <div class="col-3">
+                                <h1 style="font-size: 4rem;" id="days"></h1>
+                                <h5>DAYS</h5>
+                            </div>
+                            <div class="col-3">
+                                <h1 style="font-size: 4rem;" id="hours"></h1>
+                                <h5>HOURS</h5>
+                            </div>
+                            <div class="col-3">
+                                <h1 style="font-size: 4rem;" id="mins"></h1>
+                                <h5>MINUTES</h5>
+                            </div>
+                            <div class="col-3">
+                                <h1 style="font-size: 4rem;" id="secs"></h1>
+                                <h5>SECONDS</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="container">
+                        <p class="mx-5 py-1" id="time-until">Time Until {{ event_time }}</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-1 p-0" style="width: 2.0833333%;flex: 0 0 2.0833333%;max-width: 2.0833333%;"></div>
+            <!--SIDEBAR-->
+            <div class="col-sm-3 mt-4" style="width: 22.91665%;flex: 0 0 22.91665%;max-width: 22.91665%;" id="sidebar">
+                <div class="mt-3" id="search" style="background-color: #222222;color: #555555;">
+                    <img class="img-fluid ml-3 p-2" src="/static/images/Search Icon.png">
+                    <span class="p-2">Search site...</span>
+                </div>
+
+                <div id="location" class="mt-4 p-3 text-center">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{ city }}</span>
+                    <hr>
+                    <p class="my-4">Latitude: <span style="font-weight: 300;">{{ lat }}</span></p>
+                    <p class="my-4">Longitude: <span style="font-weight: 300;">{{ lon }}</span></p>
+                    <p class="my-4">Timezone: <span style="font-weight: 300;">{{ tz }}</span></p>
+                    <p id="test"></p>
+                    
+                </div>
+
+                <div id="location-change" class="text-center my-4">
+                    <p class="py-2"><a data-toggle="modal" data-target="#locationModal" href="">Change Location</a></p>
+                </div>
+
+                <div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body pt-3">
+                                <button type="button" class="close pb-4" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" style="color: #797979;">&times;</span>
+                                </button>
+                                <form id="location-form" class="text-center" method="POST" action="/">
+                                    <div class="form-group pb-4">
+                                        <i class="fas fa-map-marker-alt"></i> <label for="location"> Enter Your City Below:</label>
+                                        <hr>
+                                        <input type="text" class="form-control" id="location" aria-describedby="location" name="city">
+                                    </div>
+                                </form>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" form="location-form" class="btn btn-primary mr-2">Change Location</button>
+                                    <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-map" class="text-center my-4">
+                    <p class="py-2"><a>View Map</a></p>
+                </div>
+
+                <div id="view-calendar" class="text-center my-4">
+                    <p class="py-2"><a href="/calendar">View Calendar</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-sm-9 text-center" id="upcoming-events">
+                <div class="row d-flex align-items-center justify-content-center mt-5">
+                    <h4 class="mr-2">Upcoming Events</h4> <u><a href="/calendar">See Full Calendar</a></u>
+                    
+                </div>
+                <hr style="background-color: aliceblue;">
+
+                {% for event in events_desc %}
+                    <div class="row d-flex justify-content-center my-3 mt-5">
+                        <img src="{{ event.img }}" width="100px" height="100px" class="mr-2">
+                        <div class="col">
+                            <div class="row justify-content-center">
+                                <p style="font-size: 1.25rem;">{{ event.eventName }}</p>
+                                <p class="text-muted ml-2">{{ event.dt }}</p>
+                            </div>
+                            <p>{{ event.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    {% block javascript %}
+        <script>
+            (function () {
+                
+                console.log('{{ json_str | tojson }}')
+                jstime = '{{ json_str | tojson }}'
+                jstz = '{{ json_tz_str | tojson }}'
+                
+                const second = 1000,
+                    minute = second * 60,
+                    hour = minute * 60,
+                    day = hour * 24;
+            
+                let today = new Date(),
+                    dd = String(today.getDate()).padStart(2, "0"),
+                    mm = String(today.getMonth() + 1).padStart(2, "0"),
+                    yyyy = today.getFullYear(),
+                    dayMonth = jstime,
+                    birthday = dayMonth + yyyy;
+                
+                today = mm + "/" + dd + "/" + yyyy;
+                
+                
+
+
+                const countDown = new Date(birthday).getTime(),
+
+                x = setInterval(function() {  
+                    let options = {
+                    timeZone: jstz.replace(/['"]+/g, ''),
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                    },
+
+                    formatter = new Intl.DateTimeFormat([], options);
+                    let test = formatter.format(new Date())
+                    let test2 = new Date(test).getTime()
+
+                    console.log(test2)
+
+                    const now = new Date().getTime(),
+                    
+                    distance = countDown - test2;
+                    
+                    
+                    document.getElementById("days").innerText = Math.floor(distance / (day)),
+                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                    document.getElementById("mins").innerText = Math.floor((distance % (hour)) / (minute)),
+                    document.getElementById("secs").innerText = Math.floor((distance % (minute)) / second);
+            
+                    }, 0)
+                }
+            ());
+        </script>
+    {% endblock %}
+{% endblock %}

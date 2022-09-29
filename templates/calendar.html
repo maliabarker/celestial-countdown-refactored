@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Celestial Countdown Calendar{% endblock %}
+
+{% block content %}
+    <div class="container mt-5" id="row">
+        <div id="calendar" style="font-weight: 100;"></div>
+    </div>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="/static/javascript/calendar.js"></script>
+{% endblock %}

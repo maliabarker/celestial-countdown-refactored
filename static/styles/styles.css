@@ -1,0 +1,72 @@
+body {
+    background-color: #121212;
+}
+
+nav {
+    background-color: #272727;
+}
+
+#toggled-menu {
+    color: white;
+}
+
+#toggled-menu h5:hover {
+    /* background-color: #272727; */
+    color: #F3B2B9;
+    cursor: pointer;
+}
+
+#countdown-bg {
+    background-image: url(/static/images/bg.png);
+    background-size: contain;
+    filter: brightness(60%);
+    box-shadow: inset 4px 4px 4px rgba(18, 18, 18, 0.25);
+    color: #c8c8c8;
+}
+
+#countdown {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#countdown > h1 {
+    font-size: 4rem;
+}
+
+#time-until {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar {
+    background-color: rgba(255, 255, 255, 0.05);
+    
+}
+
+#sidebar > div {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #c4c4c4;
+}
+
+#search {
+    background-color: #222222;
+    border-radius: 9px;
+    color: #555555;
+}
+
+#upcoming-events {
+    color: #c4c4c4;
+}
+
+.modal-content {
+	background-color: #272727;
+}
+
+.modal-content .modal-header,
+.modal-content .modal-footer {
+	border-color: #424242;
+}
+
+.form-control {
+	background-color: #838383;
+	border-color: #2e2e2e;
+}

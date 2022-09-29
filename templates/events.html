@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Celestial Countdown Events — {{ month }} {% endblock %}
+
+{% block content %}
+{% include 'partials/month-pagination.html' %}
+
+<div class="container">
+    <div class="col-sm-12 text-center" id="upcoming-events">
+        <div class="row d-flex align-items-center justify-content-center mt-5">
+            <h3 class="mr-2">Events for {{ month }}</h3> <u><a href="/calendar">See Full Calendar</a></u>
+            
+        </div>
+        <hr style="background-color: aliceblue;">
+
+        {% for event in events %}
+            <div class="row d-flex justify-content-center my-3 mt-5">
+                <img src="{{ event.img }}" width="100px" height="100px" class="mr-2">
+                <div class="col">
+                    <div class="row justify-content-center">
+                        <p style="font-size: 1.25rem;">{{ event.eventName }}</p>
+                        <p class="text-muted ml-2">{{ event.dt }}</p>
+                    </div>
+                    <p>{{ event.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
