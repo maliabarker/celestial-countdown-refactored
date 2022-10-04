@@ -2,6 +2,7 @@ from db import *
 from datetime import datetime, timedelta
 import calendar
 import pymongo
+import bcrypt
 
 def find_closest_date():
     date = events.aggregate(
@@ -60,3 +61,13 @@ def find_monthly_events(month_num):
     print(last_day_of_month)
     data = descriptions.find({'date': {'$gte': datetime(currentYear, month_num, 1), '$lte': datetime(currentYear, month_num, last_day_of_month)}}).sort('date', pymongo.ASCENDING)
     return data
+
+def verify_credentials(user_credentials):
+    print('cred', user_credentials)
+    user = users.find_one({'email': user_credentials['email']})
+    print('user', user)
+    if user and bcrypt.checkpw(user_credentials['password'], user['password']):
+        return user
+    else:
+        print('login failed')
+        return False

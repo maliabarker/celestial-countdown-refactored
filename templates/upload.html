@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <p>Input URL for celestial events</p>
+        <form action="/admin/upload_data" method="POST">
+            <div class="form-group">
+                <label for="url">Enter URL to scrape</label>
+                <input type="url" name="url" id="url"
+                placeholder="https://example.com"
+                pattern="https://.*"
+                required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

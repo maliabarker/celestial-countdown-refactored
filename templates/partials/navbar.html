@@ -11,6 +11,9 @@
             <h5><a href="/">Home</a></h5>
             <h5><a href="/calendar">Event Calendar</a></h5>
             <h5><a href="/{{ current_month }}/events">Event Descriptions</a></h5>
+            {% if logged_in == True %}
+                <h5><a href="/logout">Logout</a></h5>
+            {% endif %}
         </div>
     </div>
 </div>

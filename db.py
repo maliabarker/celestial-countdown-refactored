@@ -16,4 +16,5 @@ db = client.get_default_database()
 # ======= Collections ==========
 events = db.events
 descriptions = db.descriptions
+users = db.users
 # =========================
