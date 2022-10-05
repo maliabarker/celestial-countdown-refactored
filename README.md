@@ -30,4 +30,12 @@ This is :ringed_planet::star2: **Celestial Countdown** :star2::ringed_planet:, a
 
 :card_file_box: For more in-depth details on your favorite events, check out the Event Descriptions and read all about these awesome things in the sky. <br>
 
-Available live: https://celestial-countdown.herokuapp.com/
+Available live: http://celestial-calendar.dev.maliabarker.me/
+[![Website http://celestial-calendar.dev.maliabarker.me/](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://celestial-calendar.dev.maliabarker.me/)
+
+<hr>
+
+<h3>To build and run this project for development</h3>
+<p>The dockerfile and docker compose yml file are included in this repo! Simply run</p> <br>
+`docker compose up --build` <br>
+<p>And the images and containers will run! Happy coding :)</p>
