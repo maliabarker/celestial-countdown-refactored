@@ -12,6 +12,6 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 
 # Set ENV variables
-ENV PORT 5001
+# ENV PORT 5001
 
 CMD ["python", "-u", "app.py"]
