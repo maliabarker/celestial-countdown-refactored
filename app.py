@@ -63,4 +63,4 @@ def monthly_events_index(month):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
