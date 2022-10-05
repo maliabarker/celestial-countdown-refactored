@@ -30,9 +30,10 @@ This is :ringed_planet::star2: **Celestial Countdown** :star2::ringed_planet:, a
 
 :card_file_box: For more in-depth details on your favorite events, check out the Event Descriptions and read all about these awesome things in the sky. <br>
 
-Available live: http://celestial-calendar.dev.maliabarker.me/
+Available live: http://celestial-calendar.dev.maliabarker.me/  
 [![Website http://celestial-calendar.dev.maliabarker.me/](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://celestial-calendar.dev.maliabarker.me/)
-
+<br>
+<p>Additional status page can be found [here](https://statuspage.freshping.io/63358-ACS32202022Status)</p>
 <hr>
 
 <h3>To build and run this project for development</h3>
