@@ -37,5 +37,5 @@ Available live: http://celestial-calendar.dev.maliabarker.me/
 
 <h3>To build and run this project for development</h3>
 <p>The dockerfile and docker compose yml file are included in this repo! Simply run</p> <br>
-`docker compose up --build` <br>
+<p> `docker compose up --build` </p> <br>
 <p>And the images and containers will run! Happy coding :)</p>
