@@ -9,7 +9,9 @@ app.config.from_object(Config)
 # ======= DB Setup ==========
 uri = environ.get('MONGODB_URI')
 client = MongoClient(uri)
-db = client.get_default_database()
+# db = client.get_default_database()
+db_name = environ.get('MONGODB_DATABASE')
+db = client.get_database(db_name)
 # ===========================
 
 # ======= Collections ==========
