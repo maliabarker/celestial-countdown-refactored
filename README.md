@@ -39,4 +39,4 @@ Additional status page can be found [here](https://statuspage.freshping.io/63358
 <h3>To build and run this project for development</h3>
 <p>The dockerfile and docker compose yml file are included in this repo! Simply run</p> <br>
 `docker compose up --build` <br>
-<p>And the images and containers will run! Happy coding :)</p>
+<br> <p>And the images and containers will run! Happy coding :)</p>
