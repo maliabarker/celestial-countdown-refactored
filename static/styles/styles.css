@@ -6,6 +6,26 @@ nav {
     background-color: #272727;
 }
 
+/* #banner { */
+    /* position: absolute; */
+    /* top: 50px; */
+    /* left: 50%; */
+    /* white-space: nowrap; */
+    /* width: 100%; set the width of the container to be equal to the width of the viewport */
+    /* animation: scroll 10s linear infinite; */
+    /* animation-fill-mode: forwards; keep the last frame of the animation visible */
+    /* animation-delay: 0s; */
+/* } */
+
+/* @keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
 #toggled-menu {
     color: white;
 }

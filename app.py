@@ -9,7 +9,7 @@ import calendar
 from db import *
 from extensions import find_closest_date, find_three_events, find_monthly_events
 
-geolocator = Nominatim(user_agent="geoapiExercises")
+geolocator = Nominatim(user_agent="geoapiExercises", timeout=20)
 obj = TimezoneFinder()
 
 
