@@ -2,14 +2,14 @@ from flask import render_template, request
 import json
 import pytz
 from timezonefinder import TimezoneFinder
-from geopy.geocoders import Nominatim
+# from geopy.geocoders import Nominatim
 from datetime import datetime
 import calendar
 
-from db import *
+from db import app, geolocator
 from extensions import find_closest_date, find_three_events, find_monthly_events
 
-geolocator = Nominatim(user_agent="geoapiExercises", timeout=20)
+# geolocator = Nominatim(user_agent="geoapiExercises", timeout=20)
 obj = TimezoneFinder()
 
 
@@ -40,6 +40,7 @@ def index():
     if request.method == 'POST':
         city = request.form.get('city')
         location = geolocator.geocode(city)
+        print('LOCATION:', location)
         obj = TimezoneFinder()
         result = obj.timezone_at(lng=location.longitude, lat=location.latitude)
         timezone = pytz.timezone(result)
